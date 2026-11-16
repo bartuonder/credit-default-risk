@@ -1,0 +1,11 @@
+services:
+  api:
+    build: .
+    image: credit-risk:latest
+    ports:
+      - "8000:8000"
+    environment:
+      CREDIT_RISK_LOG_LEVEL: INFO
+      CREDIT_RISK_MAX_BATCH_SIZE: "100"
+      CREDIT_RISK_CORS_ORIGINS: "[]"
+    restart: unless-stopped
