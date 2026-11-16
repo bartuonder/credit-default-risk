@@ -1,0 +1,361 @@
+{
+  "threshold": 0.17,
+  "segments": {
+    "latest repayment status": {
+      "1 month late": {
+        "n": 688,
+        "default_rate": 0.32122093023255816,
+        "mean_predicted": 0.3458876504828489,
+        "flagged_share": 0.8895348837209303,
+        "false_negative_rate": 0.03619909502262444,
+        "false_positive_rate": 0.854389721627409,
+        "cost_per_client": 0.6380813953488372
+      },
+      "2+ months late": {
+        "n": 636,
+        "default_rate": 0.690251572327044,
+        "mean_predicted": 0.6826354630986735,
+        "flagged_share": 1.0,
+        "false_negative_rate": 0.0,
+        "false_positive_rate": 1.0,
+        "cost_per_client": 0.30974842767295596
+      },
+      "paid duly or no use": {
+        "n": 1720,
+        "default_rate": 0.16686046511627908,
+        "mean_predicted": 0.15195033797395646,
+        "flagged_share": 0.2924418604651163,
+        "false_negative_rate": 0.4634146341463415,
+        "false_positive_rate": 0.2435450104675506,
+        "cost_per_client": 0.5895348837209302
+      },
+      "revolving": {
+        "n": 2956,
+        "default_rate": 0.12855209742895804,
+        "mean_predicted": 0.1324719188385298,
+        "flagged_share": 0.2581190798376184,
+        "false_negative_rate": 0.5631578947368421,
+        "false_positive_rate": 0.23175465838509315,
+        "cost_per_client": 0.5639377537212449
+      }
+    },
+    "months with a delay": {
+      "1-2": {
+        "n": 1221,
+        "default_rate": 0.3063063063063063,
+        "mean_predicted": 0.32953071556935637,
+        "flagged_share": 0.8607698607698607,
+        "false_negative_rate": 0.06417112299465241,
+        "false_positive_rate": 0.8276269185360094,
+        "cost_per_client": 0.6723996723996724
+      },
+      "3-6": {
+        "n": 744,
+        "default_rate": 0.603494623655914,
+        "mean_predicted": 0.5965863612428873,
+        "flagged_share": 0.9986559139784946,
+        "false_negative_rate": 0.0,
+        "false_positive_rate": 0.9966101694915255,
+        "cost_per_client": 0.3951612903225806
+      },
+      "none": {
+        "n": 4035,
+        "default_rate": 0.12490706319702602,
+        "mean_predicted": 0.11867439281039982,
+        "flagged_share": 0.17843866171003717,
+        "false_negative_rate": 0.6567460317460317,
+        "false_positive_rate": 0.15491362220334182,
+        "cost_per_client": 0.545724907063197
+      }
+    },
+    "credit limit": {
+      "Q1 (lowest)": {
+        "n": 1530,
+        "default_rate": 0.3026143790849673,
+        "mean_predicted": 0.32250059894748584,
+        "flagged_share": 0.6954248366013072,
+        "false_negative_rate": 0.11879049676025918,
+        "false_positive_rate": 0.6148078725398313,
+        "cost_per_client": 0.6084967320261437
+      },
+      "Q2": {
+        "n": 1547,
+        "default_rate": 0.24111182934712347,
+        "mean_predicted": 0.2379593707843174,
+        "flagged_share": 0.4414996767937944,
+        "false_negative_rate": 0.26541554959785524,
+        "false_positive_rate": 0.348381601362862,
+        "cost_per_client": 0.5843568196509373
+      },
+      "Q3": {
+        "n": 1465,
+        "default_rate": 0.1658703071672355,
+        "mean_predicted": 0.1722009478108157,
+        "flagged_share": 0.31126279863481227,
+        "false_negative_rate": 0.3950617283950617,
+        "false_positive_rate": 0.2528641571194763,
+        "cost_per_client": 0.5385665529010238
+      },
+      "Q4 (highest)": {
+        "n": 1458,
+        "default_rate": 0.1700960219478738,
+        "mean_predicted": 0.1448868175096147,
+        "flagged_share": 0.21330589849108367,
+        "false_negative_rate": 0.42338709677419356,
+        "false_positive_rate": 0.13884297520661157,
+        "cost_per_client": 0.47530864197530864
+      }
+    },
+    "age": {
+      "21-29": {
+        "n": 1912,
+        "default_rate": 0.223326359832636,
+        "mean_predicted": 0.2306736041610073,
+        "flagged_share": 0.4372384937238494,
+        "false_negative_rate": 0.24824355971896955,
+        "false_positive_rate": 0.3468013468013468,
+        "cost_per_client": 0.5465481171548117
+      },
+      "30-39": {
+        "n": 2198,
+        "default_rate": 0.20609645131938126,
+        "mean_predicted": 0.20448248743031153,
+        "flagged_share": 0.37989080982711554,
+        "false_negative_rate": 0.2913907284768212,
+        "false_positive_rate": 0.2945558739255014,
+        "cost_per_client": 0.5341219290263877
+      },
+      "40-49": {
+        "n": 1341,
+        "default_rate": 0.232662192393736,
+        "mean_predicted": 0.22386048498781025,
+        "flagged_share": 0.42878448918717377,
+        "false_negative_rate": 0.266025641025641,
+        "false_positive_rate": 0.3362487852283771,
+        "cost_per_client": 0.5674869500372856
+      },
+      "50-59": {
+        "n": 473,
+        "default_rate": 0.23678646934460887,
+        "mean_predicted": 0.24410580859522746,
+        "flagged_share": 0.48625792811839325,
+        "false_negative_rate": 0.25,
+        "false_positive_rate": 0.40443213296398894,
+        "cost_per_client": 0.6046511627906976
+      },
+      "60+": {
+        "n": 76,
+        "default_rate": 0.3026315789473684,
+        "mean_predicted": 0.24880309346037907,
+        "flagged_share": 0.5,
+        "false_negative_rate": 0.2608695652173913,
+        "false_positive_rate": 0.39622641509433965,
+        "cost_per_client": 0.6710526315789473
+      }
+    }
+  },
+  "missed_defaults_share": 0.26752072343632255,
+  "defaults_below_0.1": 0.09193669932177845,
+  "non_defaults_above_confident_threshold": 0.01155574577359298,
+  "confident_threshold": 0.7,
+  "false_negative_examples": [
+    {
+      "id": 983,
+      "LIMIT_BAL": 500000,
+      "AGE": 36,
+      "PAY_1": -2,
+      "PAY_2": -2,
+      "n_delayed": 0,
+      "util_mean": 0.074,
+      "payratio_mean": 1.0,
+      "probability": 0.037,
+      "default": 1
+    },
+    {
+      "id": 28994,
+      "LIMIT_BAL": 480000,
+      "AGE": 39,
+      "PAY_1": 0,
+      "PAY_2": 0,
+      "n_delayed": 0,
+      "util_mean": 0.29,
+      "payratio_mean": 0.416,
+      "probability": 0.037,
+      "default": 1
+    },
+    {
+      "id": 16277,
+      "LIMIT_BAL": 300000,
+      "AGE": 31,
+      "PAY_1": 0,
+      "PAY_2": 0,
+      "n_delayed": 0,
+      "util_mean": 0.087,
+      "payratio_mean": 0.608,
+      "probability": 0.038,
+      "default": 1
+    },
+    {
+      "id": 8959,
+      "LIMIT_BAL": 340000,
+      "AGE": 44,
+      "PAY_1": 0,
+      "PAY_2": 0,
+      "n_delayed": 0,
+      "util_mean": 0.279,
+      "payratio_mean": 0.218,
+      "probability": 0.041,
+      "default": 1
+    },
+    {
+      "id": 3981,
+      "LIMIT_BAL": 180000,
+      "AGE": 26,
+      "PAY_1": 0,
+      "PAY_2": 0,
+      "n_delayed": 0,
+      "util_mean": 0.31,
+      "payratio_mean": 0.056,
+      "probability": 0.043,
+      "default": 1
+    },
+    {
+      "id": 10671,
+      "LIMIT_BAL": 410000,
+      "AGE": 48,
+      "PAY_1": 0,
+      "PAY_2": 0,
+      "n_delayed": 0,
+      "util_mean": 0.041,
+      "payratio_mean": 0.606,
+      "probability": 0.043,
+      "default": 1
+    },
+    {
+      "id": 971,
+      "LIMIT_BAL": 300000,
+      "AGE": 42,
+      "PAY_1": -1,
+      "PAY_2": 0,
+      "n_delayed": 0,
+      "util_mean": 0.093,
+      "payratio_mean": 0.436,
+      "probability": 0.044,
+      "default": 1
+    },
+    {
+      "id": 22712,
+      "LIMIT_BAL": 320000,
+      "AGE": 35,
+      "PAY_1": 0,
+      "PAY_2": 0,
+      "n_delayed": 0,
+      "util_mean": 0.437,
+      "payratio_mean": 0.041,
+      "probability": 0.044,
+      "default": 1
+    }
+  ],
+  "false_positive_examples": [
+    {
+      "id": 28748,
+      "LIMIT_BAL": 50000,
+      "AGE": 28,
+      "PAY_1": 3,
+      "PAY_2": 2,
+      "n_delayed": 6,
+      "util_mean": 0.048,
+      "payratio_mean": 0.0,
+      "probability": 0.801,
+      "default": 0
+    },
+    {
+      "id": 9672,
+      "LIMIT_BAL": 170000,
+      "AGE": 48,
+      "PAY_1": 2,
+      "PAY_2": 2,
+      "n_delayed": 6,
+      "util_mean": 0.014,
+      "payratio_mean": 0.0,
+      "probability": 0.798,
+      "default": 0
+    },
+    {
+      "id": 26713,
+      "LIMIT_BAL": 30000,
+      "AGE": 26,
+      "PAY_1": 2,
+      "PAY_2": 2,
+      "n_delayed": 6,
+      "util_mean": 0.517,
+      "payratio_mean": 0.088,
+      "probability": 0.795,
+      "default": 0
+    },
+    {
+      "id": 1522,
+      "LIMIT_BAL": 60000,
+      "AGE": 40,
+      "PAY_1": 3,
+      "PAY_2": 3,
+      "n_delayed": 6,
+      "util_mean": 0.171,
+      "payratio_mean": 0.037,
+      "probability": 0.79,
+      "default": 0
+    },
+    {
+      "id": 355,
+      "LIMIT_BAL": 50000,
+      "AGE": 58,
+      "PAY_1": 2,
+      "PAY_2": 2,
+      "n_delayed": 4,
+      "util_mean": 0.364,
+      "payratio_mean": 0.064,
+      "probability": 0.786,
+      "default": 0
+    },
+    {
+      "id": 22567,
+      "LIMIT_BAL": 120000,
+      "AGE": 30,
+      "PAY_1": 2,
+      "PAY_2": 2,
+      "n_delayed": 6,
+      "util_mean": 0.604,
+      "payratio_mean": 0.042,
+      "probability": 0.785,
+      "default": 0
+    },
+    {
+      "id": 10143,
+      "LIMIT_BAL": 400000,
+      "AGE": 39,
+      "PAY_1": 2,
+      "PAY_2": 2,
+      "n_delayed": 6,
+      "util_mean": 0.131,
+      "payratio_mean": 0.04,
+      "probability": 0.785,
+      "default": 0
+    },
+    {
+      "id": 16749,
+      "LIMIT_BAL": 150000,
+      "AGE": 36,
+      "PAY_1": 2,
+      "PAY_2": 3,
+      "n_delayed": 6,
+      "util_mean": 0.597,
+      "payratio_mean": 0.038,
+      "probability": 0.784,
+      "default": 0
+    }
+  ],
+  "missed_default_profile": {
+    "pay_1_mean_missed": -0.48450704225352115,
+    "pay_1_mean_caught": 1.044238683127572
+  }
+}
