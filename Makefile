@@ -15,14 +15,19 @@ data:
 eda: data
 	$(PY) -m credit_risk.eda --config $(CONFIG)
 
+# Stages are resumable: finished stages are skipped unless FORCE=1.
+FORCE_FLAG = $(if $(FORCE),--force,)
+
 train: data
-	$(PY) -m credit_risk.pipeline --config $(CONFIG) --stage train
+	$(PY) -m credit_risk.pipeline --config $(CONFIG) --stage train $(FORCE_FLAG)
 
 evaluate:
-	$(PY) -m credit_risk.pipeline --config $(CONFIG) --stage evaluate
+	$(PY) -m credit_risk.pipeline --config $(CONFIG) --stage evaluate $(FORCE_FLAG)
 
 report:
+	$(PY) scripts/make_data_card.py
 	$(PY) scripts/make_report.py --config $(CONFIG)
+	$(PY) scripts/make_readme.py
 
 test:
 	$(PY) -m pytest
@@ -41,4 +46,8 @@ run:
 docker-build:
 	docker build -t credit-risk:latest .
 
-all: setup data eda train evaluate report test lint
+all: setup
+	$(MAKE) data eda
+	$(MAKE) train FORCE=1
+	$(MAKE) evaluate FORCE=1
+	$(MAKE) report test lint
