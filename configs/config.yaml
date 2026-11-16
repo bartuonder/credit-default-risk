@@ -1,0 +1,112 @@
+seed: 42
+
+paths:
+  raw: data/raw/default_of_credit_card_clients.xls
+  interim: data/interim/default_clean.csv
+  results: results
+  reports: reports
+  artifacts: artifacts
+
+data:
+  header_row: 1
+  id_column: ID
+  target: default
+  rename:
+    PAY_0: PAY_1
+    default payment next month: default
+  # Undocumented codes are merged into the documented "other" category.
+  recode:
+    EDUCATION: {0: 4, 5: 4, 6: 4}
+    MARRIAGE: {0: 3}
+
+split:
+  test_size: 0.2
+
+features:
+  categorical: [SEX, EDUCATION, MARRIAGE]
+  engineered: [utilisation, payment_ratio, delay_counts, status_trend, bill_trend]
+  # Feature groups used by the ablation; engineered columns are assigned to the
+  # group of the information they summarise.
+  groups:
+    demographics: [SEX, EDUCATION, MARRIAGE, AGE]
+    credit_limit: [LIMIT_BAL]
+    repayment_status: [PAY_1, PAY_2, PAY_3, PAY_4, PAY_5, PAY_6,
+                       n_delayed, max_delay, mean_delay, status_trend]
+    bill_amounts: [BILL_AMT1, BILL_AMT2, BILL_AMT3, BILL_AMT4, BILL_AMT5, BILL_AMT6,
+                   util_1, util_mean, util_max, bill_trend]
+    payment_amounts: [PAY_AMT1, PAY_AMT2, PAY_AMT3, PAY_AMT4, PAY_AMT5, PAY_AMT6,
+                      payratio_1, payratio_mean, payratio_total]
+
+cv:
+  n_splits: 5
+  n_repeats: 3
+  seed_offset: 1
+  # Random search uses its own folds, different from the evaluation folds.
+  tuning_splits: 3
+  tuning_seed_offset: 100
+
+metrics:
+  selection: average_precision
+  ece_bins: 10
+
+models:
+  logistic_regression:
+    params: {C: 1.0, max_iter: 2000}
+  random_forest:
+    params: {n_estimators: 300, min_samples_leaf: 5, n_jobs: 4}
+    search:
+      n_estimators: [200, 300, 500]
+      max_depth: [6, 8, 12, null]
+      min_samples_leaf: [5, 10, 20, 40]
+      max_features: [0.2, 0.33, 0.5]
+  hist_gradient_boosting:
+    params: {learning_rate: 0.05, max_iter: 300}
+    search:
+      learning_rate: [0.02, 0.03, 0.05, 0.08]
+      max_iter: [150, 250, 400]
+      max_leaf_nodes: [8, 15, 31]
+      min_samples_leaf: [20, 50, 100]
+      l2_regularization: [0.0, 1.0, 10.0]
+  lightgbm:
+    params: {n_estimators: 300, learning_rate: 0.05, num_leaves: 31, n_jobs: 4, verbose: -1}
+    search:
+      n_estimators: [150, 250, 400, 600]
+      learning_rate: [0.01, 0.02, 0.03, 0.05]
+      num_leaves: [8, 15, 31]
+      min_child_samples: [20, 50, 100]
+      subsample: [0.7, 0.85, 1.0]
+      colsample_bytree: [0.5, 0.7, 1.0]
+      reg_lambda: [0.0, 1.0, 10.0]
+
+tuning:
+  n_iter: 15
+  scoring: average_precision
+
+calibration:
+  methods: [sigmoid, isotonic]
+  cv: 5
+
+decision:
+  # False negative (missed default) costs more than a false positive
+  # (declined good client). The 5:1 ratio is an assumption, not a measured value.
+  cost_fn: 5.0
+  cost_fp: 1.0
+  ratios: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+  risk_bands:
+    - {name: low, upper: 0.15}
+    - {name: medium, upper: 0.35}
+    - {name: high, upper: 1.0}
+
+ablation:
+  n_repeats: 2
+
+interpretability:
+  shap_sample: 2000
+  top_features: 6
+
+fairness:
+  age_bands: [[21, 29], [30, 39], [40, 49], [50, 59], [60, 200]]
+
+errors:
+  n_examples: 8
+  confident_threshold: 0.7
