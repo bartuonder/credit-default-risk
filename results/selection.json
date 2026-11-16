@@ -1,0 +1,25 @@
+{
+  "metric": "pr_auc",
+  "mean_scores": {
+    "hist_gradient_boosting": 0.564057403852897,
+    "lightgbm": 0.5665889947282623,
+    "random_forest": 0.56567720099574
+  },
+  "top_by_mean": "lightgbm",
+  "indistinguishable_from_top": [
+    "lightgbm",
+    "random_forest",
+    "hist_gradient_boosting"
+  ],
+  "selected": "lightgbm",
+  "rule": "highest mean pr_auc; models whose paired difference to the top is not significant (corrected resampled t-test, alpha=0.05) are treated as ties and the first in tie_break_order is chosen",
+  "params": {
+    "subsample": 0.7,
+    "reg_lambda": 10.0,
+    "num_leaves": 31,
+    "n_estimators": 400,
+    "min_child_samples": 50,
+    "learning_rate": 0.01,
+    "colsample_bytree": 0.7
+  }
+}
