@@ -192,3 +192,11 @@ def test_cors_only_for_configured_origins(artifacts):
         other = c.get("/health", headers={"Origin": "https://other.test"})
     assert ok.headers.get("access-control-allow-origin") == "https://example.org"
     assert "access-control-allow-origin" not in other.headers
+
+
+def test_frontend_is_served(client):
+    index = client.get("/")
+    assert index.status_code == 200 and "text/html" in index.headers["content-type"]
+    assert "Credit default risk" in index.text
+    assert client.get("/static/app.js").status_code == 200
+    assert client.get("/static/style.css").status_code == 200
