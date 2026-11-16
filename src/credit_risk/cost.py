@@ -101,6 +101,10 @@ def run_threshold(cfg: dict[str, Any]) -> dict[str, Any]:
         "oof_precision_recall": summarise_folds(at_t),
         "flagged_share": float(np.mean([(p >= threshold).mean() for p in oof])),
         "curve": {"threshold": GRID.tolist(), "expected_cost": curve.tolist()},
+        "curves_by_ratio": {
+            str(r): cost_curve(yv, oof, r * d["cost_fp"], d["cost_fp"]).tolist()
+            for r in (1, 2, 5, 10)
+        },
         "sensitivity": sensitivity(yv, oof, d["ratios"], threshold, d["cost_fp"]),
     }
     (path_for(cfg, "results") / "threshold.json").write_text(json.dumps(out, indent=2) + "\n")
