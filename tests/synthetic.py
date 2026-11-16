@@ -6,13 +6,13 @@ import pandas as pd
 from credit_risk import schema
 
 
-def make_synthetic_frame(n: int = 600, seed: int = 0) -> pd.DataFrame:
+def make_synthetic_frame(n: int = 800, seed: int = 0) -> pd.DataFrame:
     rng = np.random.default_rng(seed)
     limit = rng.choice([10_000, 50_000, 100_000, 200_000, 500_000], n)
     status = rng.choice([-2, -1, 0, 0, 0, 1, 2, 3], size=(n, 6))
     bills = (rng.uniform(-0.05, 1.1, size=(n, 6)) * limit[:, None]).round()
     pays = (rng.uniform(0, 0.4, size=(n, 6)) * np.abs(bills)).round()
-    logit = -1.4 + 0.9 * (status[:, 0] > 0) + 0.3 * (status[:, 1] > 0) - limit / 600_000
+    logit = -1.8 + 2.2 * (status[:, 0] > 0) + 1.0 * (status[:, 1] > 0) - limit / 400_000
     target = (rng.uniform(size=n) < 1 / (1 + np.exp(-logit))).astype(int)
     df = pd.DataFrame(
         {
