@@ -1,0 +1,55 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "credit-risk"
+version = "1.0.0"
+description = "Credit card default prediction: calibrated models, cost-based decisions, and a FastAPI service."
+readme = "README.md"
+requires-python = ">=3.12"
+license = { text = "MIT" }
+dependencies = [
+    "numpy==2.5.5",
+    "pandas==3.1.1",
+    "scikit-learn==1.9.1",
+    "lightgbm==4.7.0",
+    "shap==0.54.1",
+    "matplotlib==3.11.2",
+    "scipy==1.18.1",
+    "PyYAML==6.0.3",
+    "joblib==1.6.0",
+    "python-calamine==0.9.1",
+    "fastapi==0.163.1",
+    "uvicorn==0.54.0",
+    "pydantic==2.14.3",
+    "pydantic-settings==2.16.3",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest==9.2.0",
+    "pytest-cov==7.1.0",
+    "ruff==0.17.5",
+    "httpx==0.28.1",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+"credit_risk.api" = ["static/*"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+src = ["src", "tests", "scripts"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "SIM", "NPY", "PD"]
+ignore = ["PD901"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+filterwarnings = ["ignore::DeprecationWarning", "ignore::FutureWarning", "ignore::UserWarning"]
