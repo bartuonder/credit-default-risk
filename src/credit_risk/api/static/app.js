@@ -40,7 +40,10 @@ function h(tag, attrs = {}, ...children) {
     else if (k === "text") node.textContent = v;
     else node.setAttribute(k, v === true ? "" : v);
   }
-  for (const c of children.flat()) node.append(c instanceof Node ? c : document.createTextNode(c));
+  for (const c of children.flat()) {
+    if (c == null || c === false) continue;
+    node.append(c instanceof Node ? c : document.createTextNode(c));
+  }
   return node;
 }
 
@@ -161,12 +164,12 @@ function gauge(p, threshold, band) {
   const point = (t, rad) => [cx + rad * Math.cos(Math.PI * (1 - t)), cy - rad * Math.sin(Math.PI * (1 - t))];
   const arc = "M 16 100 A 84 84 0 0 1 184 100";
   const [x1, y1] = point(threshold, r - 12), [x2, y2] = point(threshold, r + 10);
-  return svg("svg", { class: "gauge", viewBox: "0 0 200 112", role: "img", "aria-label": `Default probability ${fmt.pct(p)}; decision threshold ${fmt.pct(threshold)}` },
+  return svg("svg", { class: "gauge", viewBox: "0 0 200 122", role: "img", "aria-label": `Default probability ${fmt.pct(p)}; decision threshold ${fmt.pct(threshold)}` },
     svg("path", { d: arc, fill: "none", stroke: "var(--track)", "stroke-width": 16, "stroke-linecap": "round", pathLength: 100 }),
     svg("path", { d: arc, fill: "none", stroke: `var(--${band})`, "stroke-width": 16, "stroke-linecap": "round", pathLength: 100, "stroke-dasharray": `${Math.max(p * 100, 0.8)} 100` }),
     svg("line", { x1, y1, x2, y2, stroke: "var(--text)", "stroke-width": 2 }),
-    svg("text", { x: 16, y: 110, "font-size": 10, fill: "var(--muted)", "text-anchor": "middle" }, "0%"),
-    svg("text", { x: 184, y: 110, "font-size": 10, fill: "var(--muted)", "text-anchor": "middle" }, "100%"));
+    svg("text", { x: 16, y: 120, "font-size": 10, fill: "var(--muted)", "text-anchor": "middle" }, "0%"),
+    svg("text", { x: 184, y: 120, "font-size": 10, fill: "var(--muted)", "text-anchor": "middle" }, "100%"));
 }
 
 function factorList(items, unit) {
@@ -259,11 +262,11 @@ function stat(label, value, ci) {
 }
 
 function calibrationChart(curve) {
-  const W = 360, H = 320, m = { l: 44, r: 14, t: 12, b: 40 };
+  const W = 360, H = 320, m = { l: 52, r: 14, t: 12, b: 40 };
   const maxV = Math.max(0.5, ...curve.mean_predicted, ...curve.observed_rate) * 1.08;
   const x = (v) => m.l + (v / maxV) * (W - m.l - m.r);
   const y = (v) => H - m.b - (v / maxV) * (H - m.t - m.b);
-  const ticks = [0, 0.25, 0.5, 0.75, 1].map((t) => +(t * maxV).toFixed(2));
+  const ticks = Array.from({ length: Math.floor(maxV / 0.1) + 1 }, (_, i) => +(i * 0.1).toFixed(1));
   const kids = [
     svg("line", { class: "axis", x1: m.l, y1: H - m.b, x2: W - m.r, y2: H - m.b }),
     svg("line", { class: "axis", x1: m.l, y1: m.t, x2: m.l, y2: H - m.b }),
@@ -274,7 +277,7 @@ function calibrationChart(curve) {
     kids.push(svg("text", { x: m.l - 6, y: y(t) + 4, "text-anchor": "end" }, t.toFixed(2)));
   }
   kids.push(svg("text", { x: (W + m.l) / 2, y: H - 6, "text-anchor": "middle" }, "Mean predicted probability"));
-  const label = svg("text", { x: 12, y: (H - m.b) / 2, "text-anchor": "middle", transform: `rotate(-90 12 ${(H - m.b) / 2})` }, "Observed default rate");
+  const label = svg("text", { x: 11, y: (H - m.b) / 2, "text-anchor": "middle", transform: `rotate(-90 11 ${(H - m.b) / 2})` }, "Observed default rate");
   kids.push(label);
   const pts = curve.mean_predicted.map((p, i) => [x(p), y(curve.observed_rate[i])]);
   kids.push(svg("polyline", { class: "line", points: pts.map((p) => p.join(",")).join(" ") }));
