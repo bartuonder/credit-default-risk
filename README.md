@@ -258,4 +258,4 @@ Code: MIT License (`LICENSE`). Data: CC BY 4.0 (UCI Machine Learning Repository)
 
 Yeh, I. C., and Lien, C. H. (2009). The comparisons of data mining techniques for the predictive accuracy of probability of default of credit card clients. Expert Systems with Applications, 36(2), 2473-2480.
 
-Dataset: Yeh, I. C. (2016). Default of Credit Card Clients. UCI Machine Learning Repository.
+Dataset: Yeh, I. (2009). Default of Credit Card Clients [Dataset]. UCI Machine Learning Repository. https://doi.org/10.24432/C55S3H
