@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>Credit default risk</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%232f6db5'/%3E%3Cpath d='M6 22a10 10 0 0 1 20 0' fill='none' stroke='white' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="wrap header-row">
+      <div>
+        <h1>Credit default risk</h1>
+        <p class="tagline">Probability that a credit card client defaults next month</p>
+      </div>
+      <div role="tablist" aria-label="Sections" class="tabs">
+        <button role="tab" id="tab-predict" aria-controls="panel-predict" aria-selected="true">Predict</button>
+        <button role="tab" id="tab-model" aria-controls="panel-model" aria-selected="false" tabindex="-1">Model</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <p class="disclaimer" role="note">
+      Educational demonstration on 2005 Taiwanese credit card data. It is not a lending tool and
+      must not be used for real credit decisions.
+    </p>
+  </div>
+
+  <main id="main" class="wrap">
+    <section id="panel-predict" role="tabpanel" aria-labelledby="tab-predict" class="layout">
+      <form id="applicant-form" class="card form" novalidate>
+        <div class="presets" role="group" aria-label="Example applicants">
+          <span class="muted">Examples</span>
+          <button type="button" class="chip-btn" data-preset="reliable">Reliable payer</button>
+          <button type="button" class="chip-btn" data-preset="mixed">Mixed record</button>
+          <button type="button" class="chip-btn" data-preset="delays">Repeated delays</button>
+        </div>
+        <div id="form-sections"></div>
+        <div class="actions">
+          <button type="submit" class="btn primary" id="submit">Estimate risk</button>
+          <button type="button" class="btn" id="reset">Clear</button>
+        </div>
+      </form>
+
+      <aside class="card result" aria-labelledby="result-title">
+        <h2 id="result-title">Result</h2>
+        <div id="result" aria-live="polite">
+          <div class="state empty">
+            <p>No estimate yet.</p>
+            <p class="muted">Fill in the form or choose an example, then select Estimate risk.</p>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <section id="panel-model" role="tabpanel" aria-labelledby="tab-model" hidden>
+      <div id="model-content" aria-live="polite"><div class="state"><p class="muted">Loading model details…</p></div></div>
+    </section>
+  </main>
+
+  <footer class="wrap footer">
+    <p class="muted">Data: Yeh and Lien (2009), UCI Machine Learning Repository, CC BY 4.0. API documentation at <a href="/docs">/docs</a>.</p>
+  </footer>
+  <noscript><p class="wrap">This page needs JavaScript. The API is documented at /docs.</p></noscript>
+  <script src="/static/app.js" defer></script>
+</body>
+</html>
