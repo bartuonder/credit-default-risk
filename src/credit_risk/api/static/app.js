@@ -297,7 +297,7 @@ function renderModel(info) {
           h("dt", { text: "Threshold" }), h("dd", { text: fmt.pct(info.threshold, 1) }),
           h("dt", { text: "Cost assumption" }), h("dd", { text: ratio ? `False negative = ${ratio} × false positive` : "n/a" }),
           h("dt", { text: "Cost per client" }), h("dd", { text: info.expected_cost_per_client_test != null ? fmt.num(info.expected_cost_per_client_test, 4) : "n/a" }),
-          h("dt", { text: "Model" }), h("dd", { text: `${info.model}, ${info.calibration} calibration` }),
+          h("dt", { text: "Model" }), h("dd", { text: info.calibration === "raw" ? `${info.model}, no extra calibration step` : `${info.model}, ${info.calibration} calibration` }),
           h("dt", { text: "Version" }), h("dd", { text: String(info.version) }),
           h("dt", { text: "Training rows" }), h("dd", { text: info.n_train != null ? info.n_train.toLocaleString() : "n/a" }),
           h("dt", { text: "Test rows" }), h("dd", { text: info.n_test != null ? info.n_test.toLocaleString() : "n/a" })),

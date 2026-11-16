@@ -24,7 +24,7 @@ def run_interpretation(cfg: dict[str, Any]) -> dict[str, Any]:
         results / "shap_values.npz",
         shap=contrib.to_numpy(dtype=np.float32),
         values=values.to_numpy(dtype=np.float32),
-        features=np.array(contrib.columns),
+        features=np.array(list(contrib.columns), dtype="U40"),
         base_value=explainer.base_value,
     )
     summary = {

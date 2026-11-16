@@ -148,6 +148,12 @@ def run_evaluation(cfg: dict[str, Any]) -> dict[str, Any]:
     return final
 
 
+def _cv_comparison(cfg: dict[str, Any]) -> dict[str, Any]:
+    """Cross-validated ROC-AUC and PR-AUC (mean and std) of the tuned models."""
+    tuned = json.loads((path_for(cfg, "results") / "cv_summary_tuned.json").read_text())
+    return {m: {k: s[k] for k in ("roc_auc", "pr_auc")} for m, s in tuned.items()}
+
+
 def write_model_card(cfg, final, sel, cal, thr) -> None:
     summary = json.loads((path_for(cfg, "results") / "data_summary.json").read_text())
     card = {
@@ -169,6 +175,8 @@ def write_model_card(cfg, final, sel, cal, thr) -> None:
         "expected_cost_per_client_test": final["expected_cost_per_client"],
         "calibration_curve_test": final["reliability"],
         "brier_decomposition_test": final["brier_decomposition"],
+        "explanation_unit": "probability" if sel["selected"] == "random_forest" else "log-odds",
+        "cv_comparison": _cv_comparison(cfg),
         "n_train": json.loads((path_for(cfg, "results") / "split.json").read_text())["n_train"],
         "n_test": final["n_test"],
         "feature_schema": feature_schema(),
