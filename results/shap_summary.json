@@ -1,0 +1,177 @@
+{
+  "n_samples": 2000,
+  "base_value": -1.5480574408511607,
+  "units": "model margin (log-odds) for gradient-boosted trees",
+  "importance": [
+    {
+      "feature": "PAY_1",
+      "label": "Repayment status, latest month",
+      "mean_abs_shap": 0.26499111079836346
+    },
+    {
+      "feature": "max_delay",
+      "label": "Longest payment delay",
+      "mean_abs_shap": 0.20282328455836823
+    },
+    {
+      "feature": "n_delayed",
+      "label": "Months with a payment delay",
+      "mean_abs_shap": 0.1520665733532499
+    },
+    {
+      "feature": "mean_delay",
+      "label": "Average delay (months)",
+      "mean_abs_shap": 0.12460687992564407
+    },
+    {
+      "feature": "BILL_AMT1",
+      "label": "Bill amount, latest month",
+      "mean_abs_shap": 0.09512717004310962
+    },
+    {
+      "feature": "LIMIT_BAL",
+      "label": "Credit limit",
+      "mean_abs_shap": 0.08578974339668456
+    },
+    {
+      "feature": "PAY_AMT2",
+      "label": "Payment amount, month -1",
+      "mean_abs_shap": 0.0846966165782962
+    },
+    {
+      "feature": "util_max",
+      "label": "Peak utilisation",
+      "mean_abs_shap": 0.06700758389913448
+    },
+    {
+      "feature": "PAY_AMT3",
+      "label": "Payment amount, month -2",
+      "mean_abs_shap": 0.06196571237776758
+    },
+    {
+      "feature": "PAY_AMT1",
+      "label": "Payment amount, latest month",
+      "mean_abs_shap": 0.06065275554102218
+    },
+    {
+      "feature": "util_1",
+      "label": "Latest utilisation",
+      "mean_abs_shap": 0.052447037523221315
+    },
+    {
+      "feature": "PAY_AMT6",
+      "label": "Payment amount, month -5",
+      "mean_abs_shap": 0.04809930537254943
+    },
+    {
+      "feature": "util_mean",
+      "label": "Average utilisation",
+      "mean_abs_shap": 0.04617592984179572
+    },
+    {
+      "feature": "bill_trend",
+      "label": "Bill trend (share of limit)",
+      "mean_abs_shap": 0.044361133484245016
+    },
+    {
+      "feature": "BILL_AMT5",
+      "label": "Bill amount, month -4",
+      "mean_abs_shap": 0.034356326662055306
+    },
+    {
+      "feature": "payratio_1",
+      "label": "Latest payment / bill",
+      "mean_abs_shap": 0.034317713309139304
+    },
+    {
+      "feature": "BILL_AMT2",
+      "label": "Bill amount, month -1",
+      "mean_abs_shap": 0.03163309781727994
+    },
+    {
+      "feature": "payratio_mean",
+      "label": "Average payment / bill",
+      "mean_abs_shap": 0.028986833892646106
+    },
+    {
+      "feature": "MARRIAGE",
+      "label": "Marital status",
+      "mean_abs_shap": 0.02890279772333908
+    },
+    {
+      "feature": "PAY_AMT5",
+      "label": "Payment amount, month -4",
+      "mean_abs_shap": 0.027943386098900035
+    },
+    {
+      "feature": "SEX",
+      "label": "Sex",
+      "mean_abs_shap": 0.02388538618098702
+    },
+    {
+      "feature": "status_trend",
+      "label": "Repayment status trend",
+      "mean_abs_shap": 0.022887942981189624
+    },
+    {
+      "feature": "PAY_AMT4",
+      "label": "Payment amount, month -3",
+      "mean_abs_shap": 0.021875344507098302
+    },
+    {
+      "feature": "payratio_total",
+      "label": "Total payment / bill",
+      "mean_abs_shap": 0.02170858144120767
+    },
+    {
+      "feature": "AGE",
+      "label": "Age",
+      "mean_abs_shap": 0.021595154188714653
+    },
+    {
+      "feature": "EDUCATION",
+      "label": "Education",
+      "mean_abs_shap": 0.020381727499942697
+    },
+    {
+      "feature": "BILL_AMT4",
+      "label": "Bill amount, month -3",
+      "mean_abs_shap": 0.013863122324381442
+    },
+    {
+      "feature": "BILL_AMT3",
+      "label": "Bill amount, month -2",
+      "mean_abs_shap": 0.012195495734333026
+    },
+    {
+      "feature": "PAY_3",
+      "label": "Repayment status, month -2",
+      "mean_abs_shap": 0.00902930453056097
+    },
+    {
+      "feature": "BILL_AMT6",
+      "label": "Bill amount, month -5",
+      "mean_abs_shap": 0.007993005064009304
+    },
+    {
+      "feature": "PAY_2",
+      "label": "Repayment status, month -1",
+      "mean_abs_shap": 0.007894392068576863
+    },
+    {
+      "feature": "PAY_4",
+      "label": "Repayment status, month -3",
+      "mean_abs_shap": 0.0054207265364944615
+    },
+    {
+      "feature": "PAY_6",
+      "label": "Repayment status, month -5",
+      "mean_abs_shap": 0.004412096341997933
+    },
+    {
+      "feature": "PAY_5",
+      "label": "Repayment status, month -4",
+      "mean_abs_shap": 0.0040584485273546245
+    }
+  ]
+}
