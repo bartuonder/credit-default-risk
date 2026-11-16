@@ -21,7 +21,7 @@
   "risk_bands": [
     {
       "name": "low",
-      "upper": 0.15
+      "upper": 0.1
     },
     {
       "name": "medium",
@@ -311,6 +311,6 @@
     "scipy": "1.18.1",
     "shap": "0.54.1"
   },
-  "git_commit": "1eab141",
+  "git_commit": "9ca7473",
   "intended_use": "Educational demonstration on 2005 Taiwanese data; not for lending decisions."
 }
