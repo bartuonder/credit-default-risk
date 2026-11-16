@@ -1,0 +1,74 @@
+{
+  "raw_file": "default_of_credit_card_clients.xls",
+  "raw_sha256": "30c6be3abd8dcfd3e6096c828bad8c2f011238620f5369220bd60cfc82700933",
+  "n_rows": 30000,
+  "n_columns_raw": 25,
+  "target_rate": 0.2212,
+  "n_defaults": 6636,
+  "duplicate_rows_excluding_id": 56,
+  "raw_category_counts": {
+    "SEX": {
+      "1": 11888,
+      "2": 18112
+    },
+    "EDUCATION": {
+      "0": 14,
+      "1": 10585,
+      "2": 14030,
+      "3": 4917,
+      "4": 123,
+      "5": 280,
+      "6": 51
+    },
+    "MARRIAGE": {
+      "0": 54,
+      "1": 13659,
+      "2": 15964,
+      "3": 323
+    }
+  },
+  "recoded_rows": {
+    "EDUCATION": 345,
+    "MARRIAGE": 54
+  },
+  "pay_status_counts": {
+    "-2": 24415,
+    "-1": 34640,
+    "0": 95919,
+    "1": 3722,
+    "2": 18964,
+    "3": 1430,
+    "4": 453,
+    "5": 137,
+    "6": 74,
+    "7": 218,
+    "8": 28
+  },
+  "negative_bill_rows": 1930,
+  "columns": [
+    "LIMIT_BAL",
+    "SEX",
+    "EDUCATION",
+    "MARRIAGE",
+    "AGE",
+    "PAY_1",
+    "PAY_2",
+    "PAY_3",
+    "PAY_4",
+    "PAY_5",
+    "PAY_6",
+    "BILL_AMT1",
+    "BILL_AMT2",
+    "BILL_AMT3",
+    "BILL_AMT4",
+    "BILL_AMT5",
+    "BILL_AMT6",
+    "PAY_AMT1",
+    "PAY_AMT2",
+    "PAY_AMT3",
+    "PAY_AMT4",
+    "PAY_AMT5",
+    "PAY_AMT6",
+    "default"
+  ]
+}
