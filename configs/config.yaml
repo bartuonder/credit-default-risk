@@ -52,6 +52,8 @@ metrics:
 models:
   logistic_regression:
     params: {C: 1.0, max_iter: 2000}
+    search:
+      C: [0.003, 0.01, 0.03, 0.1, 0.3, 1.0, 3.0]
   random_forest:
     params: {n_estimators: 300, min_samples_leaf: 5}
     search:
@@ -68,7 +70,7 @@ models:
       min_samples_leaf: [20, 50, 100]
       l2_regularization: [0.0, 1.0, 10.0]
   lightgbm:
-    params: {n_estimators: 300, learning_rate: 0.05, num_leaves: 31}
+    params: {n_estimators: 300, learning_rate: 0.05, num_leaves: 31, subsample_freq: 1}
     search:
       n_estimators: [150, 250, 400, 600]
       learning_rate: [0.01, 0.02, 0.03, 0.05]
@@ -81,6 +83,12 @@ models:
 tuning:
   n_iter: 15
   scoring: average_precision
+
+selection:
+  # Used when the top two tuned candidates are not significantly different
+  # (corrected resampled t-test): prefer the smaller, faster model.
+  alpha: 0.05
+  tie_break_order: [lightgbm, hist_gradient_boosting, random_forest]
 
 calibration:
   methods: [sigmoid, isotonic]
